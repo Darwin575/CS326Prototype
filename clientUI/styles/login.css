@@ -1,0 +1,48 @@
+body {
+    font-family: 'Courier New', monospace;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+form {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+input[type="text"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #222;
+    color: #f0f0f0;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #3CBC8D;
+}
+button.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #3CBC8D;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button.btn:hover {
+    background-color: #2b9e6d;
+}

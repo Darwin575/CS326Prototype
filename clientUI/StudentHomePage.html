@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script defer src="../client-logic/book_shelf.js" type="module" ></script>
+    <script defer src="../client-logic/topnav.js" type="module" ></script>
+    <link rel="stylesheet" href="styles/book_shelf.css">
+    <link rel="stylesheet" href="styles/topnav.css">
+</head>
+<body id="student-home-page">
+    <header class="topnav">
+        <h1 id="welcome-message"></h1>
+        <div class="search-container">
+            <input type="text" placeholder="Search.." id="search-input">
+            <ul class="suggestions" id="suggestion-list"></ul>
+          </div>
+        <div class="logout-container">
+            <button class="btn">Logout</button>
+        </div>
+    </header>
+    
+    <main class="bookshelf" id="bookshelf"></main>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <script defer src="../client-logic/bookPage.js" type="module" ></script>
+    <script defer src="../client-logic/topnav.js" type="module" ></script>
+    <link rel="stylesheet" href="styles/bookPage.css">
+    <link rel="stylesheet" href="styles/topnav.css">
+</head>
+<body id="book-page">
+    <header class="topnav">
+        <h1 id="welcome-message"></h1>
+        <div class="search-container">
+            <input type="text" placeholder="Search.." id="search-input">
+            <ul class="suggestions" id="suggestion-list"></ul>
+          </div>
+        <div class="logout-container">
+            <button class="btn">Logout</button>
+        </div>
+    </header>
+    <main class="book-detail">
+        <img id="book-cover" src="" alt="Book Cover">
+        <div class="book-info">
+            <h2 id="book-title"></h2>
+            <p id="book-description"></p>
+            <p id="book-author"></p>
+            <p id="book-published"></p>
+            <button id="download-button">Download</button>
+            <div class="rating">
+                <h3>Rate this book:</h3>
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <div class="comments">
+                <h3>Comments</h3>
+                <textarea id="comment-input" placeholder="Add a comment..."></textarea>
+                <button id="add-comment-button">Add Comment</button>
+                <ul id="comment-list"></ul>
+            </div>
+        </div>
+    </main>
+    <!-- <main class="bookshelf" id="bookshelf"></main> -->
+</html>

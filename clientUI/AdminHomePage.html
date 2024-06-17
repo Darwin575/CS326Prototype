@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="../client-logic/AdminHomePage.js" type="module" ></script>
+    <script defer src="../client-logic/Log.js" type="module" ></script>
+    <script defer src="../client-logic/EditStudent.js" type="module" ></script>
+    <script defer src="../client-logic/Edit_eBook.js" type="module" ></script>
+    <script defer src="../client-logic/EditAdmin.js" type="module" ></script>
+    <script defer src="../client-logic/topnav.js" type="module" ></script>
+    <script defer src="../client-logic/book_shelf.js" type="module" ></script>
+    <link rel="stylesheet" href="styles/book_shelf.css">
+    <link rel="stylesheet" href="styles/topnav.css">
+    <link rel="stylesheet" href="styles/AdminHomePage.css">   
+    <link rel="stylesheet" href="styles/Forms.css">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+</head>
+<body id="admin-home-page">
+    <header class="topnav">
+        <h1 id="welcome-message"></h1>
+        <div class="search-container">
+            <input type="text" placeholder="Search.." id="search-input">
+            <ul class="suggestions" id="suggestion-list"></ul>
+          </div>
+        <div class="logout-container">
+            <button class="btn">Logout</button>
+        </div>
+    </header>
+    <div class="sidenav">
+        <a href="#" id="home">Home</a>
+        <button class="dropdown-btn">Admin
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="#" id="edit-admin-link">Edit Admin</a>
+            <a href="#" id="add-admin-link">Add Admin</a>
+            <a href="#" id="delete-admin-link">Delete Admin</a>
+          </div>
+        <button class="dropdown-btn">eBook
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="#" id="edit-ebook-link">Edit eBook</a>
+            <a href="#" id="add-ebook-link">Add eBook</a>
+            <a href="#" id="delete-ebook-link">Delete eBook</a>
+          </div>
+        <button class="dropdown-btn">Student
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+          <a href="#" id="edit-student-link">Edit Student</a>
+          <a href="#" id="add-student-link">Add Student</a>
+          <a href="#" id="delete-student-link">Delete Student</a>
+        </div>
+        <a href="#" id="Log">Log</a>
+      </div>
+    <main class="bookshelf" id="bookshelf" style="margin-left: 220px;"></main>   
+</body>
+</html>
