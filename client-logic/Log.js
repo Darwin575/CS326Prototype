@@ -16,7 +16,7 @@ function Log() {
 
     let organizedData = '';
     for (let i = 0; i < active.length; i += 2) {
-        organizedData += `<div>Username: ${active[i]}<br>Date: ${active[i + 1]} ${active[i+ 2]}</div>`;
+        organizedData += `<div>Username: ${active[i]}<br>Date: ${active[i + 1]}</div>`;
     }
 
     mainContent.innerHTML = organizedData;

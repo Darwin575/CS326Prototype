@@ -1,4 +1,4 @@
-export let Users = {
+let initialUsers = {
   user1: {
     username: 'gerald',
      password: 'pass1',
@@ -10,14 +10,13 @@ export let Users = {
     password: 'word2',
     usertype: 'admin',
 
-  },
-  user3: {
-    username: '',
-    password: '',
-    usertype: 'student'
-
   },  
 };
+if (!localStorage.getItem('Users')) {
+  localStorage.setItem('Users', JSON.stringify(initialUsers));
+}
+const storedUsersJSON = localStorage.getItem('Users');
+export const storedUsers = JSON.parse(storedUsersJSON) || {};
 export let active = JSON.parse(localStorage.getItem('active')) || [];
 
 export const books = [

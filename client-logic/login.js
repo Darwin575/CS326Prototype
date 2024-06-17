@@ -1,6 +1,4 @@
-import { Users, active } from "../mock-database/mock_data.js";
-
-
+import { storedUsers, active } from "../mock-database/mock_data.js";
 
 const test_btn = document.querySelector('.btn');
 if (test_btn) {
@@ -15,17 +13,19 @@ export function check_credentials(event) {
     const date = new Date().toLocaleString();
     let userFound = false;
 
-    for (const userKey in Users) {       
-        const user = Users[userKey];
+    
+
+    for (const userKey in storedUsers) {       
+        const user = storedUsers[userKey];
         const { username, password, usertype } = user;
 
         if (username === usernameInput && password === passwordInput) {
-            userFound = true;            
+            userFound = true; 
+            active.push(username);
+            active.push(date);
+            localStorage.setItem('active', JSON.stringify(active));           
 
             if (usertype === 'student') {               
-                active.push(username);
-                active.push(date);
-                localStorage.setItem('active', JSON.stringify(active));
                 window.location.href = "../clientUI/StudentHomePage.html";
             } else if (usertype === 'admin') {
                 sessionStorage.setItem('User', 'Admin') 
