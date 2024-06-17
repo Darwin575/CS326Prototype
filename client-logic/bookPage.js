@@ -1,3 +1,7 @@
+import { interactions, downloads } from "../mock-database/mock_data.js";
+const storedActive = localStorage.getItem('active'); 
+const active = JSON.parse(storedActive);
+const user = active[active.length - 2];
 document.addEventListener('DOMContentLoaded', () => {
     const storedBook = localStorage.getItem('selectedBook');
     if (storedBook) {
@@ -13,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         downloadButton.addEventListener('click', () => {
             const a = document.createElement('a');
             a.href = downloadUrl;
+            downloads.push("Username: " + user + ", Dowloaded: " + book.title)
+            localStorage.setItem('downloads', JSON.stringify(downloads));
             a.download = book.title;
             document.body.appendChild(a);
             a.click();
@@ -32,17 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle comments
     const addCommentButton = document.getElementById('add-comment-button');
     addCommentButton.addEventListener('click', () => {
-        const storedActive = localStorage.getItem('active'); 
-        const active = JSON.parse(storedActive);
-        const user = active[active.length - 2];
+        
         const commentInput = document.getElementById('comment-input');
         const commentList = document.getElementById('comment-list');
         const commentText = commentInput.value.trim();
         
         if (commentText && user) {
             const book = JSON.parse(storedBook);
-            active.push(book.title + ": " + commentText)
-            console.log(active)
+            interactions.push("Username: " + user + ", Book's title: " + book.title + ", Comment: " + commentText)
+            localStorage.setItem('interactions', JSON.stringify(interactions));
+            console.log(interactions)
             const commentItem = document.createElement('li');
             commentItem.textContent = `${user}: ${commentText}`; 
             commentList.appendChild(commentItem);

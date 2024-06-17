@@ -1,4 +1,4 @@
-import { books } from "../mock-database/mock_data.js";
+import { storedBooks } from "../mock-database/mock_data.js";
 import { populateBookshelf } from './book_shelf.js';
 const user = sessionStorage.getItem('User')
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Populate bookshelf on StudentHomePage
   if (document.getElementById('student-home-page') || document.getElementById('admin-home-page')) {
-    populateBookshelf(books);
+    populateBookshelf(storedBooks);
   }
 
   // Add search functionality
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function handleSearch() {
     const searchValue = searchInput.value.toLowerCase();
-    const suggestions = books.filter(book =>
+    const suggestions = storedBooks.filter(book =>
       book.title.toLowerCase().includes(searchValue) ||
       book.category.toLowerCase().includes(searchValue) ||
       book.author.toLowerCase().includes(searchValue)
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') {
       e.preventDefault();
       const searchValue = searchInput.value.toLowerCase();
-      const filteredBooks = books.filter(book =>
+      const filteredBooks = storedBooks.filter(book =>
         book.title.toLowerCase().includes(searchValue) ||
         book.category.toLowerCase().includes(searchValue) ||
         book.author.toLowerCase().includes(searchValue)

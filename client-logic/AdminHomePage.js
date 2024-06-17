@@ -1,5 +1,5 @@
 import { populateBookshelf } from '../client-logic/book_shelf.js';
-import { books } from '../mock-database/mock_data.js';
+import { storedBooks } from '../mock-database/mock_data.js';
 var dropdown = document.getElementsByClassName("dropdown-btn");
 var i;
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function loadHomeContent() {
-    populateBookshelf(books); // Pass the books data
+    populateBookshelf(storedBooks); // Pass the books data
 }
 
 

@@ -1,5 +1,5 @@
 import { storedUsers, active } from "../mock-database/mock_data.js";
-
+console.log(active)
 const test_btn = document.querySelector('.btn');
 if (test_btn) {
     test_btn.addEventListener('click', check_credentials);   
@@ -22,7 +22,7 @@ export function check_credentials(event) {
         if (username === usernameInput && password === passwordInput) {
             userFound = true; 
             active.push(username);
-            active.push(date);
+            active.push(date)
             localStorage.setItem('active', JSON.stringify(active));           
 
             if (usertype === 'student') {               
