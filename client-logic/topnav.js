@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const logoutBtn = document.querySelector('.btn');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
-      window.location.href = "../clientUI/login.html";
+      window.location.href = "../clientUI/index.html";
     });
   }
 
