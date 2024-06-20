@@ -48,3 +48,10 @@
 .form-container button:hover {
     background-color: #45a049;
 }
+option, select{
+    font-size: 1.0em;
+    padding: 5px;
+    border-radius: 7px;
+
+
+}
