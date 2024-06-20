@@ -1,4 +1,4 @@
-
+console.log(sessionStorage.getItem('User'))
 export function populateBookshelf(books) {
   
   const bookshelf = document.getElementById('bookshelf');
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchResults = localStorage.getItem('searchResults');
   if (searchResults) {
     const books = JSON.parse(searchResults);
-    populateBookshelf(storedBooks);
+    populateBookshelf(books);
     localStorage.removeItem('searchResults');
   }
 });

@@ -11,10 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Handle logout
-  const logoutBtn = document.querySelector('.btn');
+  const logoutBtn = document.querySelector('.lbtn');
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
       window.location.href = "../clientUI/index.html";
+    });
+  }
+
+  const homeBtn = document.querySelector('.hbtn');
+  if (homeBtn && sessionStorage.getItem('User') === 'Admin') {
+    homeBtn.addEventListener('click', () => {
+      window.location.href = "../clientUI/AdminHomePage.html";
+    });
+  } else if (homeBtn && sessionStorage.getItem('User') === 'Student') {
+    homeBtn.addEventListener('click', () => {
+      window.location.href = "../clientUI/StudentHomePage.html";
     });
   }
 

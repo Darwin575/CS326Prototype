@@ -25,7 +25,8 @@ export function check_credentials(event) {
             active.push(date)
             localStorage.setItem('active', JSON.stringify(active));           
 
-            if (usertype === 'student') {               
+            if (usertype === 'student') { 
+                sessionStorage.setItem('User', 'Student')               
                 window.location.href = "../clientUI/StudentHomePage.html";
             } else if (usertype === 'admin') {
                 sessionStorage.setItem('User', 'Admin') 

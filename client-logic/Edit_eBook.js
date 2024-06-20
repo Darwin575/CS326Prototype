@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
 function loadEditEbookContent() {
     const mainContent = document.getElementById('bookshelf');
     mainContent.innerHTML = `
@@ -39,7 +38,7 @@ function loadEditEbookContent() {
                 ${storedBooks.map(book => `<option value="${book.title}">${book.title}</option>`).join('')}
             </select><br><br>
 
-            <form id="edit-ebook-form">
+            <form id="edit-ebook-form" style="display: none;">
                 <label for="edit-ebook-title">Title:</label>
                 <input type="text" id="edit-ebook-title" name="edit-ebook-title" required><br><br>
 
@@ -61,6 +60,9 @@ function loadEditEbookContent() {
         if (selectedEbook) {
             document.getElementById('edit-ebook-title').value = selectedEbook.title;
             document.getElementById('edit-ebook-author').value = selectedEbook.author;
+            editEbookForm.style.display = 'block';
+        } else {
+            editEbookForm.style.display = 'none';
         }
     });
 
@@ -69,28 +71,21 @@ function loadEditEbookContent() {
         const editedTitle = editEbookForm.elements['edit-ebook-title'].value;
         const editedAuthor = editEbookForm.elements['edit-ebook-author'].value;
 
-        // Find the index of the selected eBook in storedBooks array
         const index = storedBooks.findIndex(book => book.title === selectEbook.value);
 
         if (index !== -1) {
-            // Update the eBook details
             storedBooks[index].title = editedTitle;
             storedBooks[index].author = editedAuthor;
 
-            // Update the local storage
             localStorage.setItem('Books', JSON.stringify(storedBooks));
 
-            // Provide feedback to the user
             mainContent.innerHTML = `<p>Ebook ${editedTitle} has been successfully updated!</p>`;
-
-            // Log the updated Books array to console for debugging
             console.log('Updated Books:', storedBooks);
         } else {
             alert('Ebook not found.');
         }
     });
 }
-
 
 function loadAddEbookContent() {
     const mainContent = document.getElementById('bookshelf');
@@ -104,13 +99,50 @@ function loadAddEbookContent() {
                 <label for="add-ebook-author">Author:</label>
                 <input type="text" id="add-ebook-author" name="add-ebook-author" required><br><br>
 
-                <input type="file" id="myFile" name="filename">
+                <label for="add-ebook-category">Category:</label>
+                <input type="text" id="add-ebook-category" name="add-ebook-category" required><br><br>
+
+                <label for="add-ebook-cover">Cover Image:</label>
+                <input type="file" id="add-ebook-cover" name="add-ebook-cover" accept="image/*" required><br><br>
+
+                <label for="add-ebook-file">Ebook File:</label>
+                <input type="file" id="add-ebook-file" name="add-ebook-file" accept=".pdf" required><br><br>
 
                 <button type="submit">Submit</button>
             </form>
         </div>
     `;
-    // Add logic to handle form submission if needed
+
+    const addEbookForm = document.getElementById('add-ebook-form');
+    addEbookForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const newEbook = {
+            title: addEbookForm.elements['add-ebook-title'].value,
+            author: addEbookForm.elements['add-ebook-author'].value,
+            category: addEbookForm.elements['add-ebook-category'].value,
+        };
+
+        const coverFile = addEbookForm.elements['add-ebook-cover'].files[0];
+        const ebookFile = addEbookForm.elements['add-ebook-file'].files[0];
+
+        if (coverFile && ebookFile) {
+            const coverFilePath = `../mock-database/book_cover/${coverFile.name}`;
+            const ebookFilePath = `../mock-database/book_files/${ebookFile.name}`;
+
+            newEbook.cover = coverFilePath;
+            newEbook.file_link = ebookFilePath;
+
+            // Simulating file upload and storage
+            storedBooks.push(newEbook);
+            localStorage.setItem('Books', JSON.stringify(storedBooks));
+
+            mainContent.innerHTML = `<p>Ebook ${newEbook.title} has been successfully added!</p>`;
+            console.log('Updated Books:', storedBooks);
+        } else {
+            alert('Please upload both the cover image and the ebook file.');
+        }
+    });
 }
 
 function loadDeleteEbookContent() {
@@ -134,20 +166,14 @@ function loadDeleteEbookContent() {
     confirmDeleteButton.addEventListener('click', () => {
         const selectedTitle = selectEbook.value;
 
-        // Find the index of the selected eBook in storedBooks array
         const index = storedBooks.findIndex(book => book.title === selectedTitle);
 
         if (index !== -1) {
-            // Remove the eBook from storedBooks array
             storedBooks.splice(index, 1);
 
-            // Update the local storage
             localStorage.setItem('Books', JSON.stringify(storedBooks));
 
-            // Provide feedback to the user
             mainContent.innerHTML = `<p>Ebook ${selectedTitle} has been successfully deleted!</p>`;
-
-            // Log the updated Books array to console for debugging
             console.log('Updated Books:', storedBooks);
         } else {
             alert('Ebook not found.');
